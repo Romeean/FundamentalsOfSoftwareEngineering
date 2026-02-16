@@ -6,9 +6,6 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 
-
-
-
 namespace thrid_lab
 {
     public partial class Form1 : Form
@@ -21,7 +18,7 @@ namespace thrid_lab
 
         private void OpenFile_Click(object sender, EventArgs e)
         {
-            openFileDialog.Filter = "All files | *.*";
+            openFileDialog.Filter = "All files (*.*)|*.*";
             openFileDialog.ShowDialog();
         }
 
