@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Diagnostics.Metrics;
 using System.IO;            
 using System.Linq;          
@@ -43,8 +43,10 @@ namespace thrid_lab
 
         private void calculate(string fileValue)
         {
-            string vowels = "аеєиіїоуюяАЕЄИІЇОУЮЯ";
-            string punctuationMarks = " .,!?;:-()\"'\" ";
+            string vowels = "Р°РµС”РёС–С—РѕСѓСЋСЏРђР•Р„РР†Р‡РћРЈР®РЇ";
+            string punctuationMarks = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+            string specificSymbols = "В©В®в„ўВ±В§В¶вЂўв€ћв€љв€†в‰€в‰ в‰¤в‰Ґ";
+
 
             int lengthBytes = System.Text.Encoding.UTF8.GetByteCount(fileValue);
             int chars = 0;
@@ -69,10 +71,6 @@ namespace thrid_lab
                 {
                     numbers++;
                 }
-                else if (!char.IsWhiteSpace(currentChar))
-                {
-                    specSymbols++;
-                }
 
                 if (char.IsLetter(currentChar))
                 {
@@ -81,7 +79,7 @@ namespace thrid_lab
                         latinLetters++;
                     }
 
-                    else if (currentChar >= 'А' && currentChar <= 'я')
+                    else if (currentChar >= 'Рђ' && currentChar <= 'СЏ')
                     {
                         cyrillycLetters++;
                         if (vowels.Contains(currentChar))
@@ -95,7 +93,7 @@ namespace thrid_lab
                     }
 
                 }
-                if (!char.IsWhiteSpace(currentChar))
+                if (specificSymbols.Contains(currentChar))
                 {
                     specSymbols++;
                 }
@@ -103,11 +101,8 @@ namespace thrid_lab
                 {
                     punctuations++;
                 }
-
-
-
-
             }
+
             authorsPages = chars / 1800;
             string[] lines = fileValue.Split('\n');
             for (int i = 0; i < lines.Length; i++)
@@ -118,18 +113,18 @@ namespace thrid_lab
                     paragraphs++;
             }
 
-            string stats = $"Размір файлу (в байтах): {lengthBytes}\r\n" +
-                           $"Всього символів: {chars}\r\n" +
-                           $"Абзаців: {paragraphs}\r\n" +
-                           $"Пустих строк: {emptyLines}\r\n" +
-                           $"Авторських сторінок: {authorsPages}\r\n" +
-                           $"Цифр: {numbers}\r\n" +
-                           $"Голосных (кірилиця): {vowelsLetters}\r\n" +
-                           $"Приголосных (кірилиця): {consonantLetters}\r\n" +
-                           $"Кірилиця всього: {cyrillycLetters}\r\n" +
-                           $"Латиниця всього: {latinLetters}\r\n" +
-                           $"Пунктуація: {punctuations}\r\n" +
-                           $"Спецсимволів: {specSymbols}\r\n";
+            string stats = $"Р Р°Р·РјС–СЂ С„Р°Р№Р»Сѓ (РІ Р±Р°Р№С‚Р°С…): {lengthBytes}\r\n" +
+                           $"Р’СЃСЊРѕРіРѕ СЃРёРјРІРѕР»С–РІ: {chars}\r\n" +
+                           $"РђР±Р·Р°С†С–РІ: {paragraphs}\r\n" +
+                           $"РџСѓСЃС‚РёС… СЃС‚СЂРѕРє: {emptyLines}\r\n" +
+                           $"РђРІС‚РѕСЂСЃСЊРєРёС… СЃС‚РѕСЂС–РЅРѕРє: {authorsPages}\r\n" +
+                           $"Р¦РёС„СЂ: {numbers}\r\n" +
+                           $"Р“РѕР»РѕСЃРЅС‹С… (РєС–СЂРёР»РёС†СЏ): {vowelsLetters}\r\n" +
+                           $"РџСЂРёРіРѕР»РѕСЃРЅС‹С… (РєС–СЂРёР»РёС†СЏ): {consonantLetters}\r\n" +
+                           $"РљС–СЂРёР»РёС†СЏ РІСЃСЊРѕРіРѕ: {cyrillycLetters}\r\n" +
+                           $"Р›Р°С‚РёРЅРёС†СЏ РІСЃСЊРѕРіРѕ: {latinLetters}\r\n" +
+                           $"РџСѓРЅРєС‚СѓР°С†С–СЏ: {punctuations}\r\n" +
+                           $"РЎРїРµС†СЃРёРјРІРѕР»С–РІ: {specSymbols}\r\n";
 
             textBox2.Text = stats;
         }
