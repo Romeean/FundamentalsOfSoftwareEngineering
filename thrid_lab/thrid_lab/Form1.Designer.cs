@@ -33,6 +33,8 @@
             openFileDialog = new OpenFileDialog();
             OpenFile = new Button();
             textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            label1 = new Label();
             SuspendLayout();
             // 
             // filename
@@ -76,17 +78,39 @@
             textBox1.TabIndex = 5;
             textBox1.TextChanged += textBox1_TextChanged;
             // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(587, 86);
+            textBox2.Multiline = true;
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(366, 483);
+            textBox2.TabIndex = 6;
+            textBox2.TextChanged += textBox2_TextChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(587, 68);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Result";
+            label1.Click += label1_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(559, 617);
+            ClientSize = new Size(1195, 617);
+            Controls.Add(label1);
+            Controls.Add(textBox2);
             Controls.Add(textBox1);
             Controls.Add(OpenFile);
             Controls.Add(statsLabel);
             Controls.Add(filename);
             Name = "Form1";
             Text = "Form1";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -97,5 +121,7 @@
         private OpenFileDialog openFileDialog;
         private Button OpenFile;
         private TextBox textBox1;
+        private TextBox textBox2;
+        private Label label1;
     }
 }
