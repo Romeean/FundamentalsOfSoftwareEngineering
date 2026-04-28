@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;          
 using System.Text.RegularExpressions; 
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 
 namespace thrid_lab
@@ -112,7 +113,16 @@ namespace thrid_lab
                 else
                     paragraphs++;
             }
+            string text = "Living in the lonely world.";
+            string pattern = @"l.*y";
 
+            string exixiist = "naaah";
+
+            bool isContains = Regex.IsMatch(text, pattern);
+            if (isContains)
+            {
+                exixiist = "exist!";
+            }
             string stats = $"Размір файлу (в байтах): {lengthBytes}\r\n" +
                            $"Всього символів: {chars}\r\n" +
                            $"Абзаців: {paragraphs}\r\n" +
@@ -124,7 +134,10 @@ namespace thrid_lab
                            $"Кірилиця всього: {cyrillycLetters}\r\n" +
                            $"Латиниця всього: {latinLetters}\r\n" +
                            $"Пунктуація: {punctuations}\r\n" +
-                           $"Спецсимволів: {specSymbols}\r\n";
+                           $"Спецсимволів: {specSymbols}\r\n" +
+                           $"Pattern: {exixiist}\r\n";
+
+
 
             textBox2.Text = stats;
         }
